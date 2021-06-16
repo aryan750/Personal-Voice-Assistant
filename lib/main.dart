@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'HomeScreen.dart';
 
 void main() {
@@ -38,17 +39,18 @@ class SsplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Vx.black,
+      backgroundColor: Vx.hexToColor("#3c787e"),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/BigWhiteLogo.png',
-              height: 120,
+            SvgPicture.asset(
+              'assets/logo.svg',
+              fit: BoxFit.scaleDown,
+              height: 400,
             ),
             SizedBox(
-              height: 20,
+              height: 100,
             ),
             CircularProgressIndicator(
               valueColor: AlwaysStoppedAnimation<Color>(Colors.white),

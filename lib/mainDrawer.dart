@@ -1,8 +1,13 @@
 import 'package:simpleflutterapp/HomeScreen.dart';
-import 'package:flutter/material.dart';
 import 'package:simpleflutterapp/AppStats.dart';
+import 'package:simpleflutterapp/FAQ.dart';
+
+import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 // import 'package:velocity_x/velocity_x.dart';
 
+// import 'package:velocity_x/velocity_x.dart';
 class MainDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -14,33 +19,29 @@ class MainDrawer extends StatelessWidget {
             Container(
               width: double.infinity,
               padding: EdgeInsets.all(20),
-              color: Colors.blue[800],
+              color: HexColor("#3c787e"),
               child: Center(
                 child: Column(
                   children: <Widget>[
-                    Container(
-                      width: 100,
+                    SvgPicture.asset(
+                      'assets/logo.svg',
+                      fit: BoxFit.scaleDown,
                       height: 100,
-                      margin: EdgeInsets.only(
-                        top: 30,
-                      ),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.rectangle,
-                        image: DecorationImage(
-                            image: ExactAssetImage('assets/index.jpeg'),
-                            fit: BoxFit.fill),
-                      ),
                     ),
                   ],
                 ),
               ),
             ),
             ListTile(
-              leading: Icon(Icons.home),
+              leading: Icon(
+                Icons.home,
+                color: HexColor("#3c787e"),
+              ),
               title: Text(
                 'Home',
                 style: TextStyle(
                   fontSize: 18,
+                  color: HexColor("#3c787e"),
                 ),
               ),
               onTap: () {
@@ -49,11 +50,15 @@ class MainDrawer extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(Icons.data_usage),
+              leading: Icon(
+                Icons.data_usage,
+                color: HexColor("#3c787e"),
+              ),
               title: Text(
                 'App Usage',
                 style: TextStyle(
                   fontSize: 18,
+                  color: HexColor("#3c787e"),
                 ),
               ),
               onTap: () {
@@ -62,18 +67,21 @@ class MainDrawer extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(Icons.question_answer_outlined),
+              leading: Icon(
+                Icons.question_answer_outlined,
+                color: HexColor("#3c787e"),
+              ),
               title: Text(
                 'FAQ',
                 style: TextStyle(
                   fontSize: 18,
+                  color: HexColor("#3c787e"),
                 ),
               ),
-              onTap: null,
-              //() {
-              //   Navigator.push(context,
-              //       new MaterialPageRoute(builder: (context) => Faq()));
-              // },
+              onTap: () {
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) => faq()));
+              },
             ),
           ],
         ),

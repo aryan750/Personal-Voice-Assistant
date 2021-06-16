@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:app_usage/app_usage.dart';
-
+import 'package:hexcolor/hexcolor.dart';
+import 'package:velocity_x/velocity_x.dart';
+import 'package:simpleflutterapp/mainDrawer.dart';
 void main() => runApp(AppStats());
 
 class AppStats extends StatefulWidget {
@@ -20,12 +22,8 @@ class _AppStatsState extends State<AppStats> {
     try {
       DateTime endDate = new DateTime.now();
       DateTime startDate = endDate.subtract(Duration(hours: 1));
-      List<AppUsageInfo> infoList =
-          await AppUsage.getAppUsage(startDate, endDate);
-      setState(() {
-        _infos = infoList;
-      });
-
+      List<AppUsageInfo> infoList = await AppUsage.getAppUsage(startDate, endDate);
+      setState(() {_infos = infoList;});
       for (var info in infoList) {
         print(info.toString());
       }
@@ -38,17 +36,14 @@ class _AppStatsState extends State<AppStats> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        brightness: Brightness.dark,
+        brightness: Brightness.light,
       ),
       home: Scaffold(
+        drawer: MainDrawer(),
         appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back_rounded),
-            onPressed: () {
-              Navigator.pop(context, true);
-            },
-          ),
           title: const Text('Application Usage Stats'),
+          backgroundColor: Vx.hexToColor("#3c787e"),
+          elevation: 0.0,
         ),
         body: ListView.builder(
             itemCount: _infos.length,
@@ -58,8 +53,14 @@ class _AppStatsState extends State<AppStats> {
                   trailing: Text(_infos[index].usage.toString()));
             }),
         floatingActionButton: FloatingActionButton(
-            onPressed: getUsageStats, child: Icon(Icons.file_download)),
+            onPressed: getUsageStats,
+            backgroundColor: HexColor("#3c787e"),
+            child: Icon(
+              Icons.file_download,
+              color: Colors.white,
+            )),
         floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+        backgroundColor: Vx.hexToColor('#b8eff5'),
       ),
     );
   }
