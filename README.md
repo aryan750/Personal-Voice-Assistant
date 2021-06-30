@@ -1,5 +1,5 @@
 # AVA
-AVA is a personal voice assistant developed in flutter for android and IOS.
+AVA is a personal voice assistant developed in FLUTTER for android and IOS.
 It works same as Google Now and Apple's Siri with some additional features.
 
 Features of the application:
